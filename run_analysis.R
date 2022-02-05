@@ -77,7 +77,7 @@ final_data<-group_by(data,labels,subjects)
 final_data<-summarise(final_data,across(everything(),mean))
 # dat<-summarise_each(data2,mean)
 
-
+write.table(final_data,"run_data.txt",row.names=FALSE)
 
 
 
