@@ -1,12 +1,14 @@
 # Downloading files
-#setwd("your working directory")
+library(dplyr)
+setwd("/Users/rodrigo/Documents/R/Data Science/Getting and Cleaning Data")
 
 if (dir.exists("UCI HAR Dataset")==FALSE){
         download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",
                       destfile = "data.zip", method = "curl")
         unzip("data.zip")
 }
-#setwd("your working directory/UCI HAR Dataset")
+
+setwd("/Users/rodrigo/Documents/R/Data Science/Getting and Cleaning Data/UCI HAR Dataset")
 
 # Load the data into R
 testdat <- read.table("test/X_test.txt")
@@ -41,8 +43,7 @@ rm(feats, testdat, traindat)
 
 # Select mean and sd measures
 
-library(dplyr)
-library(stringr)
+
 a<-c(grep("mean()",names(data)), grep("std",names(data)),dim(data)[2]-1,dim(data)[2])
 a<-sort(a)
 data <- data[,a]
@@ -71,8 +72,6 @@ names(data)<-gsub("-"," ",names(data))
 
 # Second data with averages
 
-library(tidyverse)
-library(dplyr)
 #detach("package:plyr", unload = TRUE)
 final_data<-group_by(data,labels,subjects)
 final_data<-summarise(final_data,across(everything(),mean))
