@@ -1,6 +1,6 @@
 # Downloading files
 library(dplyr)
-setwd("/Users/rodrigo/Documents/R/Data Science/Getting and Cleaning Data")
+##setwd("your wd")
 
 if (dir.exists("UCI HAR Dataset")==FALSE){
         download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",
@@ -8,7 +8,7 @@ if (dir.exists("UCI HAR Dataset")==FALSE){
         unzip("data.zip")
 }
 
-setwd("/Users/rodrigo/Documents/R/Data Science/Getting and Cleaning Data/UCI HAR Dataset")
+setwd("./UCI HAR Dataset")
 
 # Load the data into R
 testdat <- read.table("test/X_test.txt")
